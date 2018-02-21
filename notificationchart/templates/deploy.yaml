@@ -102,4 +102,4 @@ spec:
       - path: /notification
         backend:
           serviceName: notification-service
-servicePort: 9443
+          servicePort: 9443
