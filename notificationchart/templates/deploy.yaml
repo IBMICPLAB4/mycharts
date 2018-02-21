@@ -89,7 +89,7 @@ spec:
     app: notification
 ---   
 #Configure the ingress 
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1beta2
 kind: Ingress
 metadata:
 # annotations:
