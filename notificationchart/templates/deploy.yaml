@@ -13,7 +13,7 @@
 #   limitations under the License.
 
 #Deploy the pod
-apiVersion: apps/v1beta2
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: notification-twitter
@@ -64,7 +64,7 @@ spec:
                 key: issuer
         ports:
           - containerPort: 9080
-          - containerPort: 9443
+          - containerPort: 9444
         imagePullPolicy: Always
 ---
 #Deploy the service
@@ -83,13 +83,13 @@ spec:
       targetPort: 9080
     - name: https
       protocol: TCP
-      port: 9443
-      targetPort: 9443
+      port: 9444
+      targetPort: 9444
   selector:
     app: notification
 ---   
 #Configure the ingress 
-apiVersion: apps/v1beta2
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
 # annotations:
@@ -102,4 +102,4 @@ spec:
       - path: /notification
         backend:
           serviceName: notification-service
-          servicePort: 9443
+          servicePort: 9444
